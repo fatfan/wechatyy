@@ -1,0 +1,87 @@
+/*! app.less */
+
+/**
+ * 1. normalize some elements default behivor.
+ * 2. provide common ui components.
+ */
+
+//  @rem: 0.01rem;
+
+ @font-face {
+     font-family: 'iconfont';  /* project id 333529 */
+     src: url('https://at.alicdn.com/t/font_333529_5tz81kffzf3i8uxr.eot');
+     src: url('https://at.alicdn.com/t/font_333529_5tz81kffzf3i8uxr.eot?#iefix') format('embedded-opentype'),
+     url('https://at.alicdn.com/t/font_333529_5tz81kffzf3i8uxr.woff') format('woff'),
+     url('https://at.alicdn.com/t/font_333529_5tz81kffzf3i8uxr.ttf') format('truetype'),
+     url('https://at.alicdn.com/t/font_333529_5tz81kffzf3i8uxr.svg#iconfont') format('svg');
+ }
+
+ :global {
+     html {
+        // position: fixed;
+         height: 100%;
+         width: 100%;
+     }
+
+     body, #app, #router {
+         position: relative;
+         height: 100%;
+        //  overscroll-behavior: none;
+     }
+     #app {
+         display: flex;
+         flex-direction: column;
+     }
+    //  body,textarea,input,button,select,keygen,legend{ font-size: inherit; line-height: inherit; font-family: "-apple-system","Helvetica Neue",Helvetica,"Pingfang SC","Hiragino Sans GB","Heiti SC","Microsoft Yahei","WenQuanYi Micro Hei",sans-serif;color:#333;-webkit-font-smoothing: antialiased}
+    //  html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;outline:none;}
+    //  header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+    //  table{border-collapse:collapse;border-spacing:0;overflow:hidden;word-break:break-all;}
+    //  caption,th{text-align:left;font-weight:normal;}
+    //  html,body,fieldset,img,iframe,abbr{border:0;}
+    //  i,cite,em,var,address,dfn{font-style:normal;}
+    //  [hidefocus],summary{outline:0;}
+    //  ul,li{list-style:none;}
+    //  h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+    //  sup,sub{font-size:83%;}
+    //  pre,code,kbd,samp{font-family:inherit;}
+    //  q:before,q:after{content:none;}
+    //  textarea{overflow:auto;resize:none;}
+    //  label,summary{cursor:default;}
+    //  a,button{cursor:pointer;}
+    //  del,ins,u,s,a,a:hover{text-decoration:none;}
+    //  a{ text-decoration:none; outline:none; color: #333}/*去掉链接点击时出现的虚线框*/
+    //  /*a:hover{ color: #ff4646; }*/
+    //  input::-moz-focus-inner{border:none;}/*去掉按钮点击时出现的虚线框--------*/
+    //  html{ margin:0; min-width: 100%; height: 100%; background-color: #fff;}/*解决height:100%无效的问题*/
+    //  body{ width: 100%; margin: 0 auto; }
+
+     .mdui-container,
+    .mdui-container-fluid {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin-right: auto;
+    margin-left: auto;
+    }
+    .mdui-container:after,
+    .mdui-container-fluid:after {
+    display: table;
+    clear: both;
+    content: '';
+    }
+    .mdui-container {
+    width: 96%;
+    max-width: 1280px;
+    }
+    @media (min-width: 600px) {
+    .mdui-container {
+        width: 94%;
+    }
+    }
+    @media (min-width: 1024px) {
+    .mdui-container {
+        width: 92%;
+    }
+    }
+ }

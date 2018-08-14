@@ -1,0 +1,62 @@
+.u-input{
+    .input-box{
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: .96rem;
+        border: .01rem solid #ddd;
+        padding: 0 .96rem 0 .3rem;
+
+        label{
+            font-size: .32rem;
+            color: #666;
+        }
+
+        input[type='text'], input[type='password']{
+            flex-grow: 1;
+            box-sizing: border-box;
+            // width: 100%;
+            height: 100%;
+            border: 0;
+            padding-left: .3rem;
+            // padding: 0 .96rem 0 .3rem;
+
+            line-height: 100%;
+            font-size: .32rem;
+            color: #333;
+        }
+
+        .close{
+            position: absolute;
+            right: .3rem;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            .icon{
+                position: relative;
+                width: .4rem;
+                height: .4rem;
+
+                &::before, &::after{
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    width: 100%;
+                    height: 2px;
+                    transform: translateY(-50%) rotate(45deg);
+                    background-color: #999;
+                }
+                &::after{
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+            }
+        }
+    }
+    .tip{
+        margin: .15rem 0;
+        padding-left: .3rem;
+        color: #f44;
+        font-size: .24rem;
+    }
+}

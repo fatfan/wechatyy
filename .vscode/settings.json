@@ -1,0 +1,7 @@
+{
+    "less.compile": {
+        "sourceMap": true,
+        "out": false
+    },
+    "editor.tabSize": 2
+}
