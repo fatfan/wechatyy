@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 
+import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
+import Paper from '@material-ui/core/Paper'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -23,9 +25,15 @@ const styles = theme => ({
   },
   card: {
     // width: '100%',
-    maxWidth: 800,
+    // maxWidth: 800,
     margin: 10,
     flexShrink: 0
+  },
+  paper: {
+    ...theme.mixins.gutters(),
+    margin: 10,
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2
   },
   detail: {
     marginLeft: 'auto',
@@ -57,88 +65,107 @@ class Explore extends Component {
           </Toolbar>
         </AppBar>
         <Main>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image="./src/assets/imgs/4.jpg"
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="headline" component="h2">
+          <Grid container spacing={24}>
+            <Grid item xs={12} md={6}>
+
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.media}
+                  image="./src/assets/imgs/4.jpg"
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="headline" component="h2">
                 周年庆|杭州
-              </Typography>
-              <Typography component="p">
+                  </Typography>
+                  <Typography component="p">
                 爱贷6周年大型投资人见面会
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <IconButton aria-label="Add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="Share">
-                <ShareIcon />
-              </IconButton>
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <IconButton aria-label="Add to favorites">
+                    <FavoriteIcon />
+                  </IconButton>
+                  <IconButton aria-label="Share">
+                    <ShareIcon />
+                  </IconButton>
 
-              <Button size="small" color="primary" className={classes.detail}>
+                  <Button size="small" color="primary" className={classes.detail}>
                 查看详情
-              </Button>
-            </CardActions>
-          </Card>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image="./src/assets/imgs/3.jpg"
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="headline" component="h2">
-                陪伴的力量
-              </Typography>
-              <Typography component="p">
-                陪伴的力量
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <IconButton aria-label="Add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="Share">
-                <ShareIcon />
-              </IconButton>
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={6}>
 
-              <Button size="small" color="primary" className={classes.detail}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.media}
+                  image="./src/assets/imgs/3.jpg"
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="headline" component="h2">
+                陪伴的力量
+                  </Typography>
+                  <Typography component="p">
+                陪伴的力量
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <IconButton aria-label="Add to favorites">
+                    <FavoriteIcon />
+                  </IconButton>
+                  <IconButton aria-label="Share">
+                    <ShareIcon />
+                  </IconButton>
+
+                  <Button size="small" color="primary" className={classes.detail}>
                 查看详情
-              </Button>
-            </CardActions>
-          </Card>
-
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image="./src/assets/imgs/2.jpg"
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="headline" component="h2">
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.media}
+                  image="./src/assets/imgs/2.jpg"
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="headline" component="h2">
                 陪伴的力量
-              </Typography>
-              <Typography component="p">
+                  </Typography>
+                  <Typography component="p">
                 陪伴的力量
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <IconButton aria-label="Add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="Share">
-                <ShareIcon />
-              </IconButton>
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <IconButton aria-label="Add to favorites">
+                    <FavoriteIcon />
+                  </IconButton>
+                  <IconButton aria-label="Share">
+                    <ShareIcon />
+                  </IconButton>
 
-              <Button size="small" color="primary" className={classes.detail}>
+                  <Button size="small" color="primary" className={classes.detail}>
                 查看详情
-              </Button>
-            </CardActions>
-          </Card>
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Paper className={classes.paper}>
+                <Typography variant="headline" component="h3" gutterBottom>
+                积分乐园
+                </Typography>
+                <Typography component="p">
+                更多精彩，敬请期待
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
         </Main>
         <Tabnav history={history} match={match}/>
       </Page>

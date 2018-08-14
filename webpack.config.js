@@ -7,8 +7,8 @@ module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: {
-    index: ['babel-polyfill', './src/index.js', 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true']
-    // greeter: './src/components/greeter'
+    index: ['babel-polyfill', './src/index.js', 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true'],
+    vip: ['babel-polyfill', './src/vip.js', 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
