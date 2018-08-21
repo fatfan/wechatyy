@@ -2,6 +2,8 @@ import fetch from 'isomorphic-fetch'
 
 import SnackbarSingleton from '../components/snackbar-singleton'
 
+const dataPath = process.env.NODE_ENV === 'development' ? '/wechatyy/src/data' : '/wechatyy/data'
+
 export default async function request (url, data, option, codes) {
   if (Array.isArray(option)) {
     codes = option
@@ -22,7 +24,7 @@ export default async function request (url, data, option, codes) {
     ...option
   }
 
-  const response = await fetch(`/wechatyy/src/data/${url}.cgi`, option)
+  const response = await fetch(`${dataPath}/${url}.cgi`, option)
 
   if (response.status !== 200) {
     SnackbarSingleton.show('网络异常，请稍后重试')

@@ -4,9 +4,10 @@
   "description": "new web app for wechatjr by react",
   "main": "index.js",
   "scripts": {
-    "dev": "node sdcm/sdcm.main.dev.js d:\\dev\\webroot",
+    "dev": "set NODE_ENV=development&&node sdcm/sdcm.main.dev.js d:\\dev\\webroot",
     "test": "node sdcm/sdcm.main.js d:\\dev\\webroot",
-    "build": "node build/index.js"
+    "build": "node build/index.js",
+    "dist": "webpack --config ./config/webpack.prod.config.js --progress --profile --colors"
   },
   "keywords": [
     "react",
@@ -29,6 +30,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "eslint": "^5.3.0",
     "eslint-config-standard": "^11.0.0",
@@ -44,6 +46,7 @@
     "less-loader": "^4.1.0",
     "mdui": "^0.4.1",
     "normalize.css": "^8.0.0",
+    "ora": "^3.0.0",
     "postcss-less": "^2.0.0",
     "postcss-loader": "^2.1.6",
     "react": "^16.4.2",
@@ -55,6 +58,7 @@
     "typeface-roboto": "0.0.54",
     "url-loader": "^1.0.1",
     "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5",
     "webpack-hot-middleware": "^2.22.3"
   }

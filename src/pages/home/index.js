@@ -114,6 +114,10 @@ const styles = theme => ({
   card: {
     margin: 10
   },
+  media: {
+    height: 0,
+    paddingTop: '49.33%' // 370/750
+  },
   avatar: {
     fontSize: '1rem',
     backgroundColor: deepOringe[500]
@@ -143,43 +147,43 @@ const styles = theme => ({
 const tutorialSteps = [
   {
     label: 'How to be happy :)',
-    imgPath: './src/assets/imgs/1.jpg'
+    imgPath: './static/img/1.jpg'
   },
   {
     label: '1. Work with something that you like, like…',
-    imgPath: './src/assets/imgs/2.jpg'
+    imgPath: './static/img/2.jpg'
   },
   {
     label: '2. Keep your friends close to you and hangout with them',
-    imgPath: './src/assets/imgs/3.jpg'
+    imgPath: './static/img/3.jpg'
   },
   {
     label: '3. Travel everytime that you have a chance',
-    imgPath: './src/assets/imgs/4.jpg'
+    imgPath: './static/img/4.jpg'
   }
 ]
 
 const tileData = [
   {
-    img: './src/assets/imgs/1.jpg',
+    img: './static/img/1.jpg',
     title: '银行存管',
     Icon: IconCloud,
     author: 'author',
     cols: 1
   }, {
-    img: './src/assets/imgs/2.jpg',
+    img: './static/img/2.jpg',
     title: '新手福利',
     Icon: IconGift,
     author: 'author',
     cols: 2
   }, {
-    img: './src/assets/imgs/3.jpg',
+    img: './static/img/3.jpg',
     title: '邀请好友',
     Icon: IconGroup,
     author: 'author',
     cols: 2
   }, {
-    img: './src/assets/imgs/4.jpg',
+    img: './static/img/4.jpg',
     title: '会员中心',
     Icon: IconStarBorder,
     author: 'author',
@@ -293,7 +297,7 @@ class Home extends Component {
               />
               <CardMedia
                 className={classes.media}
-                image="/static/images/cards/paella.jpg"
+                image="./static/img/2.jpg"
                 title="Contemplative Reptile"
               />
               <CardContent>

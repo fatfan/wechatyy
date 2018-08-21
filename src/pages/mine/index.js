@@ -19,6 +19,7 @@ import InvestIcon from '@material-ui/icons/Payment'
 import CollectionIcon from '@material-ui/icons/AccountBalanceWallet'
 import FundIcon from '@material-ui/icons/MonetizationOnOutlined'
 import CouponIcon from '@material-ui/icons/CardGiftcard'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -94,29 +95,11 @@ const mailFolderListItems = (
 
 const otherMailFolderListItems = (
   <React.Fragment>
-    <ListItem button divider component="a" href="#/mine/userinfo">
+    <ListItem button divider component="a" href="/wechatyy/dist/data/logout.cgi">
       <ListItemIcon>
-        <FundIcon />
+        <ExitToAppIcon />
       </ListItemIcon>
-      <ListItemText primary="资金明细" />
-    </ListItem>
-    <ListItem button divider component="a" href="#/mine/vip">
-      <ListItemIcon>
-        <StarsIcon />
-      </ListItemIcon>
-      <ListItemText primary="会员中心" />
-    </ListItem>
-    <ListItem button divider component="a" href="#/mine/userinfo">
-      <ListItemIcon>
-        <CouponIcon />
-      </ListItemIcon>
-      <ListItemText primary="我的优惠" />
-    </ListItem>
-    <ListItem button divider component="a" href="#/mine/userinfo">
-      <ListItemIcon>
-        <PersonIcon />
-      </ListItemIcon>
-      <ListItemText primary="个人资料" />
+      <ListItemText primary="退出" />
     </ListItem>
   </React.Fragment>
 )
@@ -154,8 +137,9 @@ class Mine extends Component {
       return
     }
     //   let { userName, userId, phoneStatus, realStatus, cardStatus, openAccountStatus, phone, hasAnswered, vipStatus, vipLevel } = result.user
-    let { userName, phone, vipStatus, vipLevel } = result.user
+    let { userId, userName, phone, vipStatus, vipLevel } = result.user
     this.setState({
+      userId,
       userName,
       phone,
       vipStatus,
@@ -164,14 +148,14 @@ class Mine extends Component {
   }
 
   toggleDrawer = (side, open) => () => {
-    console.log(side, open)
+    // console.log(side, open)
     this.setState({
       [side]: open
     })
   }
 
   handleClickUserInfo = () => {
-    console.log('aaaa')
+    // console.log('aaaa')
     this.toggleDrawer('left', true)
   }
 
@@ -181,6 +165,7 @@ class Mine extends Component {
       return <Redirect push to={'/login/' + encodeURIComponent(backUrl)} />
     }
     const { classes, history } = this.props
+    const { userId, userName, phone, vipLevel } = this.state
 
     const sideList = (
       <div className={classes.list}>
@@ -189,6 +174,8 @@ class Mine extends Component {
         <List>{otherMailFolderListItems}</List>
       </div>
     )
+
+    const downloadApp = 'http://download.cnaidai.com/phapp-download.html'
 
     return (
       <Page>
@@ -217,14 +204,26 @@ class Mine extends Component {
             this.state.userName
               ? (
                 <div className={classes.userInfo}>
-                  <Avatar
-                    alt=""
-                    src="src/assets/imgs/logo.png"
-                    className={classes.avatar}
-                  />
-                  <h1>你好,{this.state.userName}</h1>
-                  <p>手机号：{this.state.phone}</p>
-                  <p>会员等级：{this.state.vipLevel}</p>
+                  <List>
+                    <ListItem>
+                      <Avatar
+                        alt=""
+                        src={`https://adtp.cnaidai.com/data/avatar/${userId}_avatar_middle.jpg`}
+                        className={classes.avatar}
+                      />
+                      <ListItemText primary={`你好，${userName}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText inset primary={`手机号：${phone}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText inset primary={`会员等级：${vipLevel}`} />
+                    </ListItem>
+                  </List>
+
+                  {/* <h1>你好,{userName}</h1>
+                  <p>手机号：{phone}</p>
+                  <p>会员等级：{vipLevel}</p> */}
                 </div>
               )
               : (
@@ -243,19 +242,19 @@ class Mine extends Component {
 
           <div className={classes.listContainer}>
             <List component="nav">
-              <ListItem button divider component="a" href="#/mine/userinfo">
+              <ListItem button divider component="a" href={downloadApp}>
                 <ListItemIcon>
                   <InvestIcon />
                 </ListItemIcon>
                 <ListItemText primary="出借记录" />
               </ListItem>
-              <ListItem button divider component="a" href="#/mine/userinfo">
+              <ListItem button divider component="a" href={downloadApp}>
                 <ListItemIcon>
                   <CollectionIcon />
                 </ListItemIcon>
                 <ListItemText primary="我的回款" />
               </ListItem>
-              <ListItem button divider component="a" href="#/mine/userinfo">
+              <ListItem button divider component="a" href={downloadApp}>
                 <ListItemIcon>
                   <FundIcon />
                 </ListItemIcon>
@@ -267,7 +266,7 @@ class Mine extends Component {
                 </ListItemIcon>
                 <ListItemText primary="会员中心" />
               </ListItem>
-              <ListItem button divider component="a" href="#/mine/userinfo">
+              <ListItem button divider component="a" href={downloadApp}>
                 <ListItemIcon>
                   <CouponIcon />
                 </ListItemIcon>

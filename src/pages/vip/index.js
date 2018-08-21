@@ -110,22 +110,22 @@ const styles = theme => ({
 
 const tileData = [
   {
-    img: './src/assets/imgs/1.jpg',
+    img: './static/img/1.jpg',
     title: '银行存管',
     author: 'author',
     cols: 1
   }, {
-    img: './src/assets/imgs/2.jpg',
+    img: './static/img/2.jpg',
     title: '新手福利',
     author: 'author',
     cols: 2
   }, {
-    img: './src/assets/imgs/3.jpg',
+    img: './static/img/3.jpg',
     title: '邀请好友',
     author: 'author',
     cols: 2
   }, {
-    img: './src/assets/imgs/4.jpg',
+    img: './static/img/4.jpg',
     title: '会员中心',
     author: 'author',
     cols: 1
@@ -153,7 +153,7 @@ class VipHome extends Component {
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="./src/assets/imgs/4.jpg"
+              image="./static/img/4.jpg"
               title="Contemplative Reptile"
             />
             <CardContent>
@@ -204,7 +204,7 @@ class VipHome extends Component {
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="./src/assets/imgs/3.jpg"
+              image="./static/img/3.jpg"
               title="Contemplative Reptile"
             />
             <CardContent>

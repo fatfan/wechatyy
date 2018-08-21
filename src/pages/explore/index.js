@@ -71,7 +71,7 @@ class Explore extends Component {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.media}
-                  image="./src/assets/imgs/4.jpg"
+                  image="./static/img/4.jpg"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -101,7 +101,7 @@ class Explore extends Component {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.media}
-                  image="./src/assets/imgs/3.jpg"
+                  image="./static/img/3.jpg"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -130,7 +130,7 @@ class Explore extends Component {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.media}
-                  image="./src/assets/imgs/2.jpg"
+                  image="./static/img/2.jpg"
                   title="Contemplative Reptile"
                 />
                 <CardContent>

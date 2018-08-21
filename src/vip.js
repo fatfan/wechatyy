@@ -8,9 +8,9 @@ import { red, lightBlue } from '@material-ui/core/colors'
 
 // import Button from './components/button'
 import VipHome from './pages/vip'
-import Invest from './pages/invest'
+// import Invest from './pages/invest'
 import Explore from './pages/explore'
-import Mine from './pages/mine'
+// import Mine from './pages/mine'
 import Login from './pages/login'
 import Register from './pages/register'
 import NotFound from './pages/notfound'
@@ -40,9 +40,9 @@ const App = () => {
         <Router>
           <Switch>
             <Route exact path="/" component={VipHome} />
-            <Route path="/invest" component={Invest} />
+            {/* <Route path="/invest" component={Invest} /> */}
             <Route path="/explore" component={Explore} />
-            <Route path="/mine" component={Mine} />
+            {/* <Route path="/mine" component={Mine} /> */}
             <Route exact path="/login" component={Login} />
             <Route path="/login/:router" component={Login} />
             <Route path="/register" component={Register} />

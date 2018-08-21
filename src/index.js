@@ -15,6 +15,8 @@ import Login from './pages/login'
 import Register from './pages/register'
 import NotFound from './pages/notfound'
 
+// import Dialog from './components/dialog'
+
 // import './util/flexible.js'
 // import 'typeface-roboto'
 // import 'normalize.css'
@@ -50,6 +52,7 @@ const App = () => {
           </Switch>
         </Router>
         {SnackbarSingleton.element}
+        {/* <Dialog /> */}
       </MuiThemeProvider>
     </Fragment>
   )

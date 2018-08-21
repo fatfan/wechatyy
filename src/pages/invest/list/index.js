@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 // import classNames from 'classnames'
 
@@ -16,8 +15,6 @@ import Flex from 'src/components/flex'
 import { Page, Main, Tabnav } from 'src/components/page'
 import { withStyles } from '@material-ui/core'
 // import { Tabs } from '../../components/tabs'
-import BidList from './list'
-import BidDetail from './detail/'
 
 import LinearProgress from '@material-ui/core/LinearProgress'
 
@@ -75,12 +72,7 @@ const bidList = [
   }
 ]
 
-const BID_TYPE = {
-  0: 'youxuan',
-  2: 'youbao'
-}
-
-class Invest extends Component {
+class BidList extends Component {
   static propTypes = {
     match: PropTypes.object,
     history: PropTypes.object,
@@ -89,12 +81,7 @@ class Invest extends Component {
 
   handleClick = (bidItem, e) => {
     console.log(bidItem)
-    const bidType = BID_TYPE[bidItem.type]
-    if (!bidType) {
-      console.log('请选择标的类型')
-      return
-    }
-    this.props.history.push(`/invest/detail/${bidType}/${bidItem.id}`)
+    // this.props.history.push('/invest/detail/youxuan/1')
   }
 
   render () {
@@ -104,17 +91,17 @@ class Invest extends Component {
         <AppBar position="static" color="default" className={classes.appBar}>
           <Toolbar>
             <Typography variant="title" color="inherit">
-                出借
+                标的列表
             </Typography>
           </Toolbar>
         </AppBar>
         <Main>
           <div className={classes.bidList}>
             {bidList.map(bidItem => (
-              <Paper key={bidItem.id} id={bidItem.id} className={classes.paper} elevation={1} onClick={this.handleClick.bind(this, bidItem)}>
+              <Paper key={bidItem.id} id={bidItem.id} bidType={bidItem.type} className={classes.paper} elevation={1} onClick={this.handleClick.bind(this, bidItem)}>
                 <div className={classes.bidContentBox}>
                   <Typography component="p" gutterBottom>
-                  月优宝...-{bidItem.id}
+                  月优宝...-1226
                     <span style={{float: 'right'}}>转让项目</span>
                   </Typography>
                   <Flex>
@@ -148,20 +135,4 @@ class Invest extends Component {
   }
 }
 
-// export default withStyles(styles)(Invest)
-
-const InvestRouter = ({ match }) => {
-  return (
-    <React.Fragment>
-      <Route exact path={`${match.url}`} component={withStyles(styles)(Invest)} />
-      <Route path={`${match.url}/detail`} component={BidDetail} />
-      <Route path={`${match.url}/list`} component={BidList} />
-    </React.Fragment>
-  )
-}
-
-InvestRouter.propTypes = {
-  match: PropTypes.object
-}
-
-export default InvestRouter
+export default withStyles(styles)(BidList)

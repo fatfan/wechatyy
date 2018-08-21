@@ -1,6 +1,6 @@
 const path = require('path')
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+// const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
@@ -72,9 +72,23 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    // new CleanWebpackPlugin(['dist/*']),
     // new HtmlWebpackPlugin({
     //     template: './src/index.html'
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: __dirname + '/dist/about.html',
+    //   inject: 'head',
+    //   template: 'html-withimg-loader!' + __dirname + '/src/pages/about/about.html',
+    //   chunks: ['about'],
+    //   inlineSource: '.(js|css)$'
+    // }),
+    // new HtmlWebpackPlugin({
+    //   inject: 'head',
+    //   filename: __dirname + '/dist/contact.html',
+    //   template: __dirname + '/src/pages/contact/contact.html',
+    //   chunks: ['contact'],
+    //   inlineSource: '.(js|css)$'
     // }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
