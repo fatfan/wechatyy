@@ -14,10 +14,12 @@ http://localhost/wechatyy/  打开浏览器查看效果
 
 # 项目发布：
 npm run build
+npm run build [env] 打包不同环境, env可取值：dev, test, production(默认值)
 
 # 运行测试：
-npm run test
-然后访问：http://localhost/wechatyy/dist/#/
+复制dist到webroot并重命名为wechatyy
+启动服务器：npm run test
+然后访问：http://localhost/wechatyy/#/
 
 # wechatyy
 h5 react webapp demo
@@ -25,8 +27,7 @@ h5 react webapp demo
 # todo
 md ui研究
 redux状态管理
-开发过程接口调试方法
-项目build
+代码分割
 
 # change log
 增加material ui, 开始使用md风格实现应用界面

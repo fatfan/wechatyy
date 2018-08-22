@@ -4,8 +4,8 @@
   "description": "new web app for wechatjr by react",
   "main": "index.js",
   "scripts": {
-    "dev": "set NODE_ENV=development&&node sdcm/sdcm.main.dev.js d:\\dev\\webroot",
-    "test": "node sdcm/sdcm.main.js d:\\dev\\webroot",
+    "dev": "set NODE_ENV=development&&node sdcm/sdcm.main.dev.js d:\\dev",
+    "test": "node D:/project/sdcm/sdcm.main.js d:\\dev\\webroot",
     "build": "node build/index.js",
     "dist": "webpack --config ./config/webpack.prod.config.js --progress --profile --colors"
   },

@@ -3,17 +3,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
+const conf = require('./env')
+
+let env = conf.env[process.env.NODE_ENV || 'production']
+let ghostEnv = conf.ghost[env]
+
+console.log(ghostEnv)
 
 module.exports = {
   mode: 'production',
-  // entry: './src/index.js',
   entry: {
     index: ['babel-polyfill', './src/index.js'],
     vip: ['babel-polyfill', './src/vip.js']
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/wechatyy/dist/',
+    // publicPath: `/wechatyy/${process.env.NODE_ENV === 'development' ? 'dist' : ''}`,
+    publicPath: '/wechatyy/',
     // chunkFilename: '[name].bandle.js',
     filename: '[name]-[contenthash].js'
   },
@@ -108,8 +114,17 @@ module.exports = {
         from: './static',
         to: './static'
       }, {
-        from: './src/data',
-        to: './data'
+        //   context: './src',
+        //   from: './data/**/*',
+        //   to: '',
+        //   ignore: ['data/cfg/*']
+
+        from: './src/data/',
+        to: './data',
+        ignore: ['cfg/*']
+      }, {
+        from: './src/data/cfg/ghost.' + ghostEnv + '.js',
+        to: './data/cfg/ghost.js'
       }
     ])
   ],
