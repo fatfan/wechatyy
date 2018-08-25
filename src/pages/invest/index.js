@@ -10,11 +10,14 @@ import Paper from '@material-ui/core/Paper'
 
 // import GridList from '@material-ui/core/GridList'
 // import GridListTile from '@material-ui/core/GridListTile'
+import Button from '@material-ui/core/Button'
+import StarIcon from '@material-ui/icons/Star'
+import IconArrowRight from '@material-ui/icons/KeyboardArrowRight'
 
 // import { Header } from 'src/components/page'
 import Flex from 'src/components/flex'
 import { Page, Main, Tabnav } from 'src/components/page'
-import { withStyles } from '@material-ui/core'
+import { withStyles, List, ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction } from '@material-ui/core'
 // import { Tabs } from '../../components/tabs'
 import BidList from './list'
 import BidDetail from './detail/'
@@ -22,6 +25,7 @@ import BidDetail from './detail/'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import './index.less'
+import list from './list';
 
 const styles = theme => ({
   bidList: {
@@ -29,6 +33,24 @@ const styles = theme => ({
   },
   appBar: {
     backgroundColor: 'white'
+  },
+  actBanner: {
+    width: '100%',
+    height: 0,
+    margin: '0 auto',
+    paddingTop: '33.33%',
+    backgroundImage: `url(${require('src/assets/img/act_banner.jpg')})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
+  },
+  iconYouxuan: {
+    display: 'inline-block',
+    width: '1em',
+    height: '1em',
+    marginRight: theme.spacing.unit * 2,
+    // backgroundColor: '#f44',
+    // backgroundImage: 'url(./src/assets/img/icon_youxuan@2x.png)',
+    backgroundSize: 'contain'
   },
   paper: {
     ...theme.mixins.gutters(),
@@ -109,7 +131,24 @@ class Invest extends Component {
           </Toolbar>
         </AppBar>
         <Main>
+          <div className={classes.actBanner}></div>
           <div className={classes.bidList}>
+            <List>
+              <ListItem>
+                <ListItemIcon>
+                  {/* <StarIcon /> */}
+                  <span styleName="icon-youxuan" className={classes.iconYouxuan}></span>
+                </ListItemIcon>
+                <ListItemText primary="推荐项目" />
+                <ListItemSecondaryAction>
+                  <Button className={classes.button}>
+                    查看更多
+                    <IconArrowRight className={classes.rightIcon} />
+                  </Button>
+                </ListItemSecondaryAction>
+              </ListItem>
+            </List>
+            <div styleName="empty-list"></div>
             {bidList.map(bidItem => (
               <Paper key={bidItem.id} id={bidItem.id} className={classes.paper} elevation={1} onClick={this.handleClick.bind(this, bidItem)}>
                 <div className={classes.bidContentBox}>

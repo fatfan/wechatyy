@@ -2,49 +2,86 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const webpack = require('webpack')
 const conf = require('./env')
 
 let env = conf.env[process.env.NODE_ENV || 'production']
 let ghostEnv = conf.ghost[env]
 
-console.log(ghostEnv)
+// console.log(ghostEnv)
 
 module.exports = {
   mode: 'production',
   entry: {
     index: ['babel-polyfill', './src/index.js'],
-    vip: ['babel-polyfill', './src/vip.js']
+    vip: ['babel-polyfill', './src/vip.js'],
+    // lodash: ['lodash'],
+    // jquery: ['jquery']
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
     // publicPath: `/wechatyy/${process.env.NODE_ENV === 'development' ? 'dist' : ''}`,
     publicPath: '/wechatyy/',
-    // chunkFilename: '[name].bandle.js',
+    chunkFilename: '[name]-[contenthash].bandle.js',
     filename: '[name]-[contenthash].js'
   },
   optimization: {
-    runtimeChunk: 'single',
+    // runtimeChunk: 'single',
+    runtimeChunk: {
+      name: 'manifest'
+    },
     splitChunks: {
       // chunks: 'all'
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
+          chunks: 'all',
+          priority: -20
+        },
+        materialUi: {
+          test: /[\\/]node_modules[\\/]@material-ui[\\/]/,
+          name: 'meterial-ui',
           chunks: 'all'
         }
       }
-    }
+    },
+    // MiniCssExtractPlugin: with webpack 4 you need to bring your own CSS minimizer for production
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
   },
   module: {
     rules: [{
-      test: /\.(eot|woff|woff2|ttf|svg|jpg|png)$/,
-      loader: 'url-loader?limit=10000&name=[name]-[hash:16].[ext]'
+      test: /\.(eot|woff|woff2|ttf|svg|jpe?g|png)$/,
+      // loader: 'url-loader?limit=10000&name=[name]-[hash:16].[ext]',
+      loader: 'url-loader',
+      options: {
+        limit: 10000, // 默认无限制
+        name: 'assets/img/[name]-[hash:16].[ext]',
+        publicPath: '/wechatyy/'
+      }
     }, {
       test: /\.css$/,
       use: [
+        // {
+        //   loader: 'style-loader'
+        // },
         {
-          loader: 'style-loader'
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            // you can specify a publicPath here
+            // by default it use publicPath in webpackOptions.output
+            // publicPath: '../'
+          }
         }, {
           loader: 'css-loader',
           options: {
@@ -56,8 +93,16 @@ module.exports = {
     }, {
       test: /\.less$/,
       use: [
+        // {
+        //   loader: 'style-loader'
+        // },
         {
-          loader: 'style-loader'
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            // you can specify a publicPath here
+            // by default it use publicPath in webpackOptions.output
+            // publicPath: '../'
+          }
         }, {
           loader: 'css-loader',
           options: {
@@ -97,12 +142,18 @@ module.exports = {
       title: 'caching',
       template: path.resolve(__dirname, '../src/index.html'),
       filename: 'index.html',
-      chunks: ['runtime', 'vendor', 'index']
+      chunks: ['manifest', 'vendor', 'meterial-ui', 'index']
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/vip.html'),
       filename: 'vip.html',
-      chunks: ['runtime', 'vendor', 'vip']
+      chunks: ['manifest', 'vendor', 'meterial-ui', 'vip']
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "assets/css/[name]-[contenthash].css",
+      // chunkFilename: "assets/css/[id]-[hash].css"
     }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'common' // 指定公共 bundle 的名称。

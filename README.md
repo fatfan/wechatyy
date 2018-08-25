@@ -28,14 +28,18 @@ h5 react webapp demo
 md ui研究
 redux状态管理
 代码分割
+静态资源走cdn
 
 # change log
+css文件分割
+模块动态加载
+图片加载及发布
+loading动画
+
 增加material ui, 开始使用md风格实现应用界面
 
 完成Input、Button、Tab、Flex、Toast、Header、Page等组件
-
 完成登录session存储
-
 增加eslint, 统一风格
 
 优化项目目录结构
@@ -45,5 +49,4 @@ redux状态管理
 完成request类，获取服务端数据
 
 支持react-css-modules, 样式与js分离
-
 搭建环境，配置webpack, 支持hot replace, css module

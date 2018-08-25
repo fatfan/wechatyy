@@ -53,6 +53,38 @@ class Explore extends Component {
     history: PropTypes.object,
     classes: PropTypes.object
   }
+
+  // getComponent = () => {
+  //   return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
+  //     var element = document.createElement('div')
+  //     var _ = _.default
+
+  //     element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+
+  //     return element
+
+  //   }).catch(error => 'An error occurred while loading the component')
+  // }
+
+  // require Syntax Dynamic Import Babel Plugin
+  getComponent = async () => {
+    const _ = await import(/* webpackChunkName: "lodash" */ 'lodash')
+    const $ = await import(/* webpackChunkName: "jquery" */ 'jquery')
+    var element = document.createElement('div')
+
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+    // const text = $.text(element)
+    // $.style(element, 'color', '#f66')
+
+    return element
+  }
+
+  componentDidMount(){
+    this.getComponent().then(component => {
+      document.body.appendChild(component)
+    })
+  }
+
   render () {
     const { match, history, classes } = this.props
     return (

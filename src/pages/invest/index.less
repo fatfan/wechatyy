@@ -3,3 +3,53 @@
   font-style: normal;
   line-height: 100%;
 }
+
+.icon-youxuan{
+  background-image: url(../../assets/img/icon_youxuan@2x.png);
+}
+
+.empty-list{
+
+  // 百分比实现
+  // @path: '../../assets/img/empty@2x.png';
+  // @width: image-width(@path);
+  // @height: image-height(@path);
+
+  // // @layoutWidth: @width * 100 / 750;
+  // @layoutWidth: 50%;
+
+  // display: block;
+  // height: 0;
+  // width: @layoutWidth;
+  // margin: 0 auto;
+  // padding-top: @layoutWidth * @height / @width;
+  // background-image: url(@path);
+  // background-size: cover;
+  // background-position: center;
+  // background-repeat: no-repeat;
+
+  //以下可支持max-width
+  @path: '../../assets/img/empty@2x.png';
+  @width: image-width(@path);
+  @height: image-height(@path);
+  @layoutWidth: unit(@width) / 750 * 100%;
+
+  position: relative;
+  width: @layoutWidth;
+  max-width: 360px;
+  margin: 0 auto;
+
+  background-image: url(@path);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::before{
+    content: '';
+    display: block;
+    height: 0;
+    width: 100%;
+    padding-top: @height / @width * 100%;
+  }
+
+}
