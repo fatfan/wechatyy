@@ -67,22 +67,22 @@ class Explore extends Component {
   // }
 
   // require Syntax Dynamic Import Babel Plugin
-  getComponent = async () => {
-    const _ = await import(/* webpackChunkName: "lodash" */ 'lodash')
-    const $ = await import(/* webpackChunkName: "jquery" */ 'jquery')
-    var element = document.createElement('div')
+  // getComponent = async () => {
+  //   const _ = await import(/* webpackChunkName: "lodash" */ 'lodash')
+  //   // const $ = await import(/* webpackChunkName: "jquery" */ 'jquery')
+  //   var element = document.createElement('div')
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ')
-    // const text = $.text(element)
-    // $.style(element, 'color', '#f66')
+  //   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+  //   // const text = $.text(element)
+  //   // $.style(element, 'color', '#f66')
 
-    return element
-  }
+  //   return element
+  // }
 
-  componentDidMount(){
-    this.getComponent().then(component => {
-      document.body.appendChild(component)
-    })
+  componentDidMount () {
+    // this.getComponent().then(component => {
+    //   document.body.appendChild(component)
+    // })
   }
 
   render () {

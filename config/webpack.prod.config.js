@@ -2,9 +2,9 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const webpack = require('webpack')
 const conf = require('./env')
 
@@ -16,8 +16,10 @@ let ghostEnv = conf.ghost[env]
 module.exports = {
   mode: 'production',
   entry: {
-    index: ['babel-polyfill', './src/index.js'],
-    vip: ['babel-polyfill', './src/vip.js'],
+    // index: ['babel-polyfill', './src/index.js'],
+    // vip: ['babel-polyfill', './src/vip.js'],
+    index: ['./src/index.js'],
+    vip: ['./src/vip.js']
     // lodash: ['lodash'],
     // jquery: ['jquery']
   },
@@ -25,8 +27,8 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     // publicPath: `/wechatyy/${process.env.NODE_ENV === 'development' ? 'dist' : ''}`,
     publicPath: '/wechatyy/',
-    chunkFilename: '[name]-[contenthash].bandle.js',
-    filename: '[name]-[contenthash].js'
+    chunkFilename: 'assets/js/[name]-[contenthash].bandle.js',
+    filename: 'assets/js/[name]-[contenthash].js'
   },
   optimization: {
     // runtimeChunk: 'single',
@@ -44,7 +46,7 @@ module.exports = {
         },
         materialUi: {
           test: /[\\/]node_modules[\\/]@material-ui[\\/]/,
-          name: 'meterial-ui',
+          name: 'material-ui',
           chunks: 'all'
         }
       }
@@ -142,17 +144,17 @@ module.exports = {
       title: 'caching',
       template: path.resolve(__dirname, '../src/index.html'),
       filename: 'index.html',
-      chunks: ['manifest', 'vendor', 'meterial-ui', 'index']
+      chunks: ['manifest', 'vendor', 'material-ui', 'index']
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/vip.html'),
       filename: 'vip.html',
-      chunks: ['manifest', 'vendor', 'meterial-ui', 'vip']
+      chunks: ['manifest', 'vendor', 'material-ui', 'vip']
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: "assets/css/[name]-[contenthash].css",
+      filename: 'assets/css/[name]-[contenthash].css'
       // chunkFilename: "assets/css/[id]-[hash].css"
     }),
     // new webpack.optimize.CommonsChunkPlugin({

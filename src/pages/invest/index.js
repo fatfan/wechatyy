@@ -25,7 +25,9 @@ import BidDetail from './detail/'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import './index.less'
-import list from './list';
+// import list from './list'
+
+import actBanner from '../../assets/img/act_banner.jpg'
 
 const styles = theme => ({
   bidList: {
@@ -39,7 +41,9 @@ const styles = theme => ({
     height: 0,
     margin: '0 auto',
     paddingTop: '33.33%',
-    backgroundImage: `url(${require('src/assets/img/act_banner.jpg')})`,
+    // backgroundImage: `url(${require('src/assets/img/act_banner.jpg')})`,
+    backgroundImage: `url(${actBanner})`,
+
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
   },

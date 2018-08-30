@@ -1,4 +1,4 @@
-// console.log("aaa");
+// import 'babel-polyfill'
 import React, { Fragment } from 'react'
 import reactDOM from 'react-dom'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
@@ -24,8 +24,8 @@ import './assets/css/app.less'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import SnackbarSingleton from './components/snackbar-singleton'
 
-import injectTapEventPlugin from 'react-tap-event-plugin'
-injectTapEventPlugin()
+// import injectTapEventPlugin from 'react-tap-event-plugin' // DEPRECATED
+// injectTapEventPlugin()
 
 const theme = createMuiTheme({
   palette: {

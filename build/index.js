@@ -33,7 +33,7 @@ spinner.start()
 
 webpack(webpackConfig, function (err, stats) {
   spinner.stop()
-  if (err) {
+  if (err || stats.hasErrors()) {
     throw err
   }
   console.log('build success...')

@@ -29,8 +29,12 @@ md ui研究
 redux状态管理
 代码分割
 静态资源走cdn
+动态加载浏览器兼容es6-promise or promise-polyfill
 
 # change log
+动态加载模块
+更新babel，material-ui,eslint
+
 css文件分割
 模块动态加载
 图片加载及发布
